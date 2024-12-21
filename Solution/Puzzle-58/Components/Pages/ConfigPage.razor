@@ -1,0 +1,16 @@
+﻿@page "/configpage"
+
+@if (AppState.CurrentClient == Client.None)
+{
+    <h3>Please select a client</h3>
+}
+else
+{
+    <DynamicComponent Type="@AppState.GetClientType($"Puzzle_58.Clients.{AppState.CurrentClient}.Config{AppState.CurrentClient}")" />
+}
+
+@code {
+
+    [CascadingParameter]
+    public CascadingAppState AppState { get; set; }
+}

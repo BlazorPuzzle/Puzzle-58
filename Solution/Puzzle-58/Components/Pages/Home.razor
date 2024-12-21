@@ -1,0 +1,31 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h3>Choose the client:</h3>
+<br/>
+<button class="btn btn-primary" @onclick="() => SetClient(Client.Acme)">Acme</button>
+<button class="btn btn-primary" @onclick="() => SetClient(Client.Contoso)">Contoso</button>
+
+<br />
+<br />
+
+<p style="font-size:x-large;font-weight:bold;">Selected Option: @Enum.GetName(AppState.CurrentClient)</p >
+
+<p>In this demo, we have created an architecture that lets us customize the experience for our different clients.</p>
+<p>In the real world, the client would be decided based on the login or some other method.</p>
+<p>We want to use an appstate component for each client, but we don't want to cascade it around the entire app.</p>
+<p>Instead, we want to create a state component for each client, and be able to access it as a scoped parameter in all the pages in each client.</p>
+<p>How can we provide customized state components for each client and maintain that state across client pages?</p>
+
+
+@code{
+
+    [CascadingParameter]
+    public CascadingAppState AppState { get; set; }
+
+    public void SetClient(Client client)
+    {
+        AppState.CurrentClient = client;
+    }
+}

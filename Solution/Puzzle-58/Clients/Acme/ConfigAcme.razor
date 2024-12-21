@@ -1,0 +1,13 @@
+﻿@using Components
+
+<h3>Acme Config Page</h3>
+
+<input type="text" @bind-value="ClientState.AcmeMessage" @bind-value:event="oninput" />
+
+@code {
+
+    [CascadingParameter]
+    public CascadingAppState AppState { get; set; }
+
+    AppStateAcme ClientState => (AppStateAcme)AppState.ClientState;
+}

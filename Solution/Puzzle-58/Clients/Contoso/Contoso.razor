@@ -1,0 +1,13 @@
+﻿@using Components
+
+<h3>Contoso Page</h3>
+
+@ClientState.ContosoMessage
+
+@code {
+
+    [CascadingParameter]
+    public CascadingAppState AppState { get; set; }
+
+    AppStateContoso ClientState => (AppStateContoso)AppState.ClientState;
+}

@@ -1,0 +1,12 @@
+﻿@using Components
+<h3>Acme Page</h3>
+
+@ClientState.AcmeMessage
+
+@code {
+
+    [CascadingParameter]
+    public CascadingAppState AppState { get; set; }
+
+    AppStateAcme ClientState => (AppStateAcme)AppState.ClientState;
+}
